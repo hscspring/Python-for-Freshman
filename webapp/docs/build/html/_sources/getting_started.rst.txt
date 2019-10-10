@@ -1,0 +1,22 @@
+
+Here is the API docs for order server.
+   
+
+.. _overview:
+
+***************
+Overview
+***************
+
+* :ref:`auth`
+    * :ref:`auth-sign_up`
+    * :ref:`auth-login`
+    * :ref:`auth-refresh`
+    * :ref:`auth-users`
+* :ref:`order`
+    * :ref:`order-show_menu`
+    * :ref:`order-submit_order`
+    * :ref:`order-food`
+    * :ref:`order-orders`
+* :ref:`error`
+

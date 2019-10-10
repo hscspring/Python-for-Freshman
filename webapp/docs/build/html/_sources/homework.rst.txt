@@ -1,0 +1,280 @@
+
+These are APIs of homework.
+
+
+.. _homework:
+
+***************
+Homework
+***************
+
+
+.. _homework-btest:
+
+Basic Test
+=============
+
+``POST /hw/btest/``
+
+
+Parameters
+----------
+
+=================   ============   ========================================================================================
+       Name           Type               Description
+=================   ============   ========================================================================================
+      userid          string          user id
+      token           string          user token
+      hw_mark         string          hw mark, combined by course short_url and hw id, an example: "IA005-01"
+      stu_name        string          student user name, an example: "明生"
+=================   ============   ========================================================================================
+
+
+Response
+----------
+
+``Status: 200 OK``
+
+.. code-block:: json
+
+  {
+    "res": 
+    "本次共 2 个作业：
+    第 1 个作业共提交 4 次：
+    第 1 次提交：提交时间：2019-04-28 12:00:00，排在第 47 位。得分：100 ，耗时：68 秒。全部正确。
+    第 2 次提交：提交时间：2019-04-28 12:00:00，排在第 47 位。得分：100 ，耗时：68 秒。全部正确。
+    第 3 次提交：提交时间：2019-05-28 12:00:00，排在第 47 位。得分：100 ，耗时：68 秒。全部正确。
+    第 4 次提交：提交时间：2019-05-28 12:00:00，排在第 47 位。得分：100 ，耗时：68 秒。错了 3 道题，错题分别是：第 18 题、第 19 题、第 20 题。
+    第 18 题：上了信息分析课之后，小辰开始将 Zotero 作为首选知识管理工具。他在 ft.com 看到美国指控华为的报道，觉得写得挺有参考价值，顺手点右上角 Z 按钮将信息存入 Zotero 中。他想顺便了解学术界相关研究，打开百度学术检索“华为”、“华为国际化”等，看到感兴趣的研究也会顺手存入 Zotero 。到了周日，他会点开 Zotero 某个紫色的文件夹，查看这周存放的资料，重新审视、消化一番。对一些特别有感触的点，会写一些笔记。为了方便自己后续查看原始资料来源，会生成引文信息放到自己的笔记中来。请问在这个过程中，小辰利用了 Zotero 哪些优点？q18#1:A. 快速获取元数据,方便二次利用q18#2:B. 内置高级搜索,动态保存条目q18#3:C. 集成各大主流高质量资讯网站q18#4:D. 一键保存资料,快速生成引文格式
+    第 19 题： 在搜索过程中,你需要不断变换关键词,提升查全率或查准率。以下哪些途径,可以获取更多关键词?（）q19#1:A. 使用上位词、同义词、下位词等q19#2:B. 转换为英文关键词q19#3:C. 借助工具(如万方知识平台)获取关键词q19#4:D. 利用搜索引擎的推荐关键词
+    第 20 题： 以下搜索工具及其主要功能,哪些描述是正确的?（）q20#1:A. 可以利用谷歌识图查找类似图片q20#2:B. 利用元搜索引擎,一次检索获得多个搜索引擎的检索结果q20#3:C. 可以利用 archive.org 找到网站历史备份q20#4:D. Tabs Outliner 主要作用是收藏重要网站
+    第 2 个作业共提交 3 次：
+    第 1 次提交：提交时间：2019-04-28 12:00:00，排在第 47 位。得分：100 ，耗时：68 秒。全部正确。
+    第 2 次提交：提交时间：2019-04-28 12:00:00，排在第 47 位。得分：100 ，耗时：68 秒。全部正确。
+    第 3 次提交：提交时间：2019-05-28 12:00:00，排在第 47 位。得分：100 ，耗时：68 秒。全部正确。"
+  }
+
+
+
+
+.. _homework-review:
+
+Coach Review
+=============
+
+``POST /hw/review/``
+
+Parameters
+----------
+
+=================   ============   ====================================================================
+       Name           Type               Description
+=================   ============   ====================================================================
+  user                string          coach user name
+  phone               string          coach user phone
+  content             string          coach comment content
+  short_url           string          course short url
+  hw_pid              string          the pid of a hw answers, also the same as each hw key
+  aw_key              string          student anwser id which reviewed by coach
+  is_reviewed         bool            is reviewed or not
+  is_excellent        bool            is excelent or not
+=================   ============   ====================================================================
+
+
+Response
+----------
+
+``Status: 200 OK``
+
+
+.. _homework-useranswers:
+
+User Answers
+==============
+
+``POST /hw/get_answers/``
+
+
+Parameters
+----------
+
+=================   ============   ==============================================================
+       Name           Type               Description
+=================   ============   ==============================================================
+       key           string          hw card key (ATTENTION: not package key)
+       token         string          user token
+       userid        string          user id
+=================   ============   ==============================================================
+
+
+Response
+----------
+
+``Status: 200 OK``
+
+.. code-block:: json
+
+  {
+    "res": {
+        "errno": 0,
+        "msg": "success",
+        "data": [
+            {
+                "key": "5b77365c-c565-45a3-ae74-14093dd7d5b5",
+                "pid": "c7cdc20f-9024-4a6d-bf0c-75fe24f062b4",
+                "content": {
+                    "front": {
+                        "content": "\n每章基础作业为一份试卷，由选择题构成。基础作业为每周必须完成的作业，请于 2wd1 08:42 前完成并提交。"
+                    },
+                    "back": "\n",
+                    "title": "ch1 基础作业",
+                    "type": 1,
+                    "key": "5b77365c-c565-45a3-ae74-14093dd7d5b5"
+                },
+                "comment": [
+                    {
+                        "id": "1b7dd5b0-40be-4502-bd32-8bf15a214d39",
+                        "is_my_comment": 1,
+                        "user": "郝少春",
+                        "head_img": "http://static.openmindclub.com/image/default-avatar/avatar1.png",
+                        "content": "aaa",
+                        "create_time": "2019-06-06 15:45:39"
+                    },
+                ],
+                "my_answer": {
+                    "aw_key": "693eccd7-ae04-43c7-b3e2-7648d4e5fe06",
+                    "answer": "哈哈，呵呵",
+                    "user": "郝少春",
+                    "head_img": "http://static.openmindclub.com/image/default-avatar/avatar1.png",
+                    "create_time": "2019-05-27 11:29:57",
+                    "comments_count": 9,
+                    "is_collect": 0
+                },
+                "other_answer": {
+                    "total_count": 118,
+                    "today": [],
+                    "yesterday": [],
+                    "last_week": [],
+                    "earlier": [
+                        {
+                            "aw_key": "80591a1a-303d-482d-9728-ea97e4c66e6b",
+                            "answer": "恩斯特",
+                            "user": "兔葵",
+                            "head_img": "https://static.openmindclub.com/attach/b6edc852f79a11e88a3b0a58ac100276.png",
+                            "create_time": "2019-05-30 16:08:04",
+                            "comments_count": 19,
+                            "is_collect": 0,
+                            "is_reviewed": 0,
+                            "is_excellent": 1
+                        },
+                    ]
+                }
+            }
+        ]
+    }
+  }
+
+
+
+.. _homework-display:
+
+Display
+==============
+
+``POST /hw/display/``
+
+
+Parameters
+----------
+
+=================   ============   ==============================================================
+       Name             Type               Description
+=================   ============   ==============================================================
+    userid              string          user id
+    token               string          user token
+    short_url           string          course short url
+=================   ============   ==============================================================
+
+
+Response
+----------
+
+=======================  ==============  ====================================================================
+       Name                Type               Description
+=======================  ==============  ====================================================================
+nickname                  string          user nick name
+region                    string          user region
+reserved                  string          whether the user is reserved or not
+card_looked_num           int             how many cards the user has looked
+homework_num              int             how many homework the user has finished
+  +title                  string          homework title
+  +is_finished            string          whether the homework is finished or not
+  +link                   string          homework link (actually a card)
+  +is_reviewed            string          whether the homework is reviewed by coach or not
+  +is_excellent           string          whether the homework is excellent or not
+  +test_xx_isfinished     string          whether the test is finished or not (only in "basic" homework)
+  +test_xx_score          string          test score (only in "basic" homework)
+  +test_xx_link           string          test link (only in "basic" homework)
+  +length                 string          answer length (only appeared in "advanced" homework)
+=======================  ==============  ====================================================================
+
+
+
+``Status: 200 OK``
+
+
+.. code-block:: json 
+
+  {
+    "hw_titles": [
+        "课程知识产权承诺书",
+        "Ch1 基础作业",
+        "Ch1 进阶作业 ①",
+        "Ch1 进阶作业 ②",
+        "Ch1 笔记卡",
+        "Ch2 基础作业",
+        "Ch2 进阶作业 ①",
+        "Ch2 进阶作业 ②",
+        "Ch2 笔记卡",
+        "Ch3 基础作业",
+        "Ch3 进阶作业 ① ",
+        "Ch3 进阶作业 ②",
+        "Ch3 笔记卡",
+        "Ch4 基础作业",
+        "Ch4 进阶作业 ①",
+        "Ch4 进阶作业  ②",
+        "Ch4  笔记卡 10.03.33 AM"
+    ],
+    "hw_display": [
+        {
+            "nickname": "兵临城下",
+            "region": "其他",
+            "reserved": "",
+            "card_looked_num": 187,
+            "homework_num": 10,
+            "homework_performance": [
+                {
+                    "title": "Ch1 基础作业",
+                    "is_finished": "1",
+                    "link": "https://m.openmindclub.com/stu/IA005/work/d5a49280-1237-4279-b74a-9513d4adcf80/answer/a89a7963-e28f-4fb8-bdb2-eee6acccd5b4",
+                    "is_reviewed": "0",
+                    "is_excellent": "0",
+                    "test_00_isfinished": "0",
+                    "test_00_score": "0",
+                    "test_00_link": "http://e.openmindclub.com/resultquery.aspx?activity=40129936"
+                },
+                {
+                    "title": "Ch1 进阶作业 ①",
+                    "is_finished": "0",
+                    "link": "",
+                    "is_reviewed": "0",
+                    "is_excellent": "0",
+                    "length": "0"
+                },
+            ]
+        },
+      ]
+  }
+
+
+

@@ -1,0 +1,200 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Order &#8212; Order Server v0.1 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Error Info" href="error.html" />
+    <link rel="prev" title="Authentication" href="authenticate.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <p>These are APIs of order.</p>
+<div class="section" id="order">
+<span id="id1"></span><h1>Order<a class="headerlink" href="#order" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="show-menu">
+<span id="order-show-menu"></span><h2>Show Menu<a class="headerlink" href="#show-menu" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/api/order/show_menu/</span></code></p>
+<div class="section" id="response">
+<h3>Response<a class="headerlink" href="#response" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span> <span class="p">{</span>
+   <span class="nt">&quot;menu&quot;</span><span class="p">:</span> <span class="p">[</span>
+       <span class="p">[</span>
+           <span class="mi">1</span><span class="p">,</span>
+           <span class="s2">&quot;回锅肉&quot;</span><span class="p">,</span>
+           <span class="mf">25.6</span><span class="p">,</span>
+           <span class="kc">false</span>
+       <span class="p">],</span>
+       <span class="p">[</span>
+           <span class="mi">2</span><span class="p">,</span>
+           <span class="s2">&quot;红烧肉&quot;</span><span class="p">,</span>
+           <span class="mi">28</span><span class="p">,</span>
+           <span class="kc">true</span>
+       <span class="p">]</span>
+   <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="submit-order">
+<span id="order-submit-order"></span><h2>Submit Order<a class="headerlink" href="#submit-order" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/api/order/submit_order/</span></code></p>
+<div class="section" id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 52%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Option</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ordered_food</p></td>
+<td><p>list</p></td>
+<td><p>required</p></td>
+<td><p>each item contains food id and amount</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id2">
+<h3>Response<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+   <span class="nt">&quot;order_number&quot;</span><span class="p">:</span> <span class="s2">&quot;20191010234539-0000000006&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="food">
+<span id="order-food"></span><h2>Food<a class="headerlink" href="#food" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="listfood">
+<h3>ListFood<a class="headerlink" href="#listfood" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/api/order/food/</span></code></p>
+</div>
+<div class="section" id="fooddetail">
+<h3>FoodDetail<a class="headerlink" href="#fooddetail" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/api/order/food/&lt;food_id&gt;/</span></code></p>
+</div>
+</div>
+<div class="section" id="orders">
+<span id="order-orders"></span><h2>Orders<a class="headerlink" href="#orders" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="listorders">
+<h3>ListOrders<a class="headerlink" href="#listorders" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/api/order/orders/</span></code></p>
+</div>
+<div class="section" id="orderdetail">
+<h3>OrderDetail<a class="headerlink" href="#orderdetail" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/api/order/orders/&lt;order_id&gt;/</span></code></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Order Server</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="authenticate.html">Authentication</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Order</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#show-menu">Show Menu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#submit-order">Submit Order</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#food">Food</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#orders">Orders</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="error.html">Error Info</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="authenticate.html" title="previous chapter">Authentication</a></li>
+      <li>Next: <a href="error.html" title="next chapter">Error Info</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Yam.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/order.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
