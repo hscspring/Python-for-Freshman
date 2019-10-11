@@ -70,7 +70,13 @@ class ShowMenuView(APIView):
         res = []
         for food in menu:
             price = food.price * discount
-            res.append((food.id, food.name, price, food.sold_out))
+            item = {
+                "id": food.id,
+                "name": food.name,
+                "price": price,
+                "sold_out": food.sold_out
+            }
+            res.append(item)
         return res
 
 

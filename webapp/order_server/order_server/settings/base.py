@@ -26,7 +26,7 @@ SECRET_KEY = 'j_9co0z5jyzt9my#gg_=_*_&fxa*y(3s%foup^3@)6f%*@&gr='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['add_your_host_here', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['example.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -39,13 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    # 'corsheaders',
+    'corsheaders',
     'authenticate',
     'order',
 ]
 
 MIDDLEWARE = [
-    # 'corsheaders.middleware.CorsMiddleware', # new
+    'corsheaders.middleware.CorsMiddleware', # new
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -68,6 +68,14 @@ REST_FRAMEWORK = {
         # 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
     ]
 }
+
+CORS_ORIGIN_WHITELIST = [
+    "https://example.com",
+    "https://sub.example.com",
+    "http://127.0.0.1:3000",
+    "http://localhost:3000"
+]
+
 
 ROOT_URLCONF = 'order_server.urls'
 
@@ -101,7 +109,7 @@ DATABASES = {
 }
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
     'ROTATE_REFRESH_TOKENS': False,
     'BLACKLIST_AFTER_ROTATION': True,
